@@ -42,12 +42,16 @@ Works with **Antigravity** · **Claude Code** · **Cursor** · **Codex** · **Tr
 
 Copy this repository to your plugins directory:
 
+**macOS / Linux:**
 ```bash
-# Clone
 git clone https://github.com/XINGANLIU/design-system-generator-skill.git
-
-# Move to plugins
 cp -r design-system-generator-skill ~/.gemini/config/plugins/design-system-generator
+```
+
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/XINGANLIU/design-system-generator-skill.git
+Copy-Item -Recurse design-system-generator-skill "$env:USERPROFILE\.gemini\config\plugins\design-system-generator"
 ```
 
 </details>

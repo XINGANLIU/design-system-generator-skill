@@ -39,9 +39,16 @@
 
 **Antigravity / Gemini CLI：**
 
+macOS / Linux:
 ```bash
 git clone https://github.com/XINGANLIU/design-system-generator-skill.git
 cp -r design-system-generator-skill ~/.gemini/config/plugins/design-system-generator
+```
+
+Windows (PowerShell):
+```powershell
+git clone https://github.com/XINGANLIU/design-system-generator-skill.git
+Copy-Item -Recurse design-system-generator-skill "$env:USERPROFILE\.gemini\config\plugins\design-system-generator"
 ```
 
 **Claude Code：**
