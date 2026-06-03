@@ -1,0 +1,30 @@
+# Design System Generator — Cursor Rules
+#
+# This file enables the Design System Generator skill in Cursor.
+# It loads the core SKILL.md instructions and references.
+#
+# For more info: https://github.com/XINGANLIU/design-system-generator-skill
+
+You are equipped with the Design System Generator skill.
+
+When the user asks you to create a design system, generate a color palette, build a theme,
+create UI tokens, or set up brand styles, follow the instructions in:
+  skills/design-system-generator/SKILL.md
+
+The skill uses a 5-phase workflow:
+1. Brand Input Collection — Collect brand color, font, style preferences
+2. Color System Generation — Generate OKLCH color palettes (see references/color-system.md)
+3. Token Architecture — Generate W3C Design Tokens + CSS custom properties (see references/typography-scale.md, references/spacing-system.md)
+4. Component Styles — Generate production-ready component CSS (see references/component-patterns.md)
+5. Preview & Delivery — Generate visual preview HTML page (see references/dark-mode-guide.md)
+
+Key rules:
+- Follow phases in order. Don't skip or combine phases without user confirmation.
+- All colors use OKLCH color space for perceptual uniformity.
+- All component values use CSS custom properties — never hardcode.
+- Support both Light and Dark themes using light-dark() + data-theme attribute.
+- Meet WCAG 2.2 AA contrast ratios (4.5:1 for text, 3:1 for UI).
+- Output files to a `design-system/` directory in the project root.
+
+Reference documents are in: skills/design-system-generator/references/
+Templates are in: skills/design-system-generator/templates/

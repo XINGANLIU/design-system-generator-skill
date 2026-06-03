@@ -1,0 +1,22 @@
+{
+  "name": "design-system-generator",
+  "version": "1.0.0",
+  "description": "Generate a complete, production-ready design system from a single brand color. Outputs W3C Design Tokens, CSS custom properties, component styles, and a live preview page.",
+  "author": {
+    "name": "XINGANLIU"
+  },
+  "repository": "https://github.com/XINGANLIU/design-system-generator-skill",
+  "license": "Apache-2.0",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "css",
+    "oklch",
+    "dark-mode",
+    "ui-components",
+    "theme-generator",
+    "brand",
+    "color-palette",
+    "accessibility"
+  ]
+}

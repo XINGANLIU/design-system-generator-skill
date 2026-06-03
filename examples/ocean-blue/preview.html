@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Ocean Blue — Design System Preview</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    .preview-section { padding: var(--spacing-12) var(--spacing-6); max-width: 72rem; margin: 0 auto; }
+    .preview-section + .preview-section { border-top: 1px solid var(--color-border); }
+    .section-title { font-size: var(--font-size-2xl); font-weight: var(--font-weight-bold); color: var(--color-text-primary); margin-bottom: var(--spacing-2); letter-spacing: var(--letter-spacing-tight); }
+    .section-desc { font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--spacing-8); max-width: 40rem; }
+    .subsection-title { font-size: var(--font-size-md); font-weight: var(--font-weight-semibold); color: var(--color-text-primary); margin-bottom: var(--spacing-4); margin-top: var(--spacing-8); }
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr)); gap: var(--spacing-2); margin-bottom: var(--spacing-6); }
+    .swatch { aspect-ratio: 1; border-radius: var(--radius-lg); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: var(--spacing-2); font-size: 0.6rem; font-family: var(--font-family-mono); border: 1px solid oklch(0% 0 0 / 0.06); }
+    .swatch-label { text-align: center; line-height: 1.3; font-weight: var(--font-weight-medium); }
+    .type-sample { margin-bottom: var(--spacing-4); }
+    .type-meta { font-size: var(--font-size-xs); color: var(--color-text-muted); font-family: var(--font-family-mono); margin-bottom: var(--spacing-1); }
+    .component-row { display: flex; flex-wrap: wrap; gap: var(--spacing-3); align-items: center; margin-bottom: var(--spacing-6); }
+    .component-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: var(--spacing-6); margin-bottom: var(--spacing-6); }
+    .spacing-demo { display: flex; align-items: flex-end; gap: var(--spacing-3); flex-wrap: wrap; margin-bottom: var(--spacing-6); }
+    .spacing-block { display: flex; flex-direction: column; align-items: center; gap: var(--spacing-1); }
+    .spacing-visual { background: var(--color-primary-200); border-radius: var(--radius-sm); width: 2rem; }
+    .spacing-label { font-size: 0.6rem; font-family: var(--font-family-mono); color: var(--color-text-muted); }
+    .theme-toggle { background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: var(--radius-full); padding: var(--spacing-1\.5) var(--spacing-3); cursor: pointer; font-size: var(--font-size-sm); color: var(--color-text-primary); transition: all var(--transition-fast); display: flex; align-items: center; gap: var(--spacing-2); }
+    .theme-toggle:hover { background: var(--color-bg-tertiary); }
+    .hero { text-align: center; padding: var(--spacing-20) var(--spacing-6); background: linear-gradient(180deg, var(--color-primary-surface) 0%, var(--color-bg-primary) 100%); }
+    .hero-title { font-size: var(--font-size-4xl); font-weight: var(--font-weight-extrabold); letter-spacing: var(--letter-spacing-tighter); color: var(--color-text-primary); margin-bottom: var(--spacing-4); }
+    .hero-subtitle { font-size: var(--font-size-md); color: var(--color-text-secondary); max-width: 36rem; margin: 0 auto; }
+    .preview-footer { text-align: center; padding: var(--spacing-8) var(--spacing-6); font-size: var(--font-size-xs); color: var(--color-text-muted); border-top: 1px solid var(--color-border); }
+    .preview-footer a { color: var(--color-primary-600); text-decoration: none; }
+    .preview-footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><a href="#" class="navbar__brand">🌊 Ocean Blue</a><ul class="navbar__nav"><li><a href="#colors" class="navbar__link is-active">Colors</a></li><li><a href="#typography" class="navbar__link">Typography</a></li><li><a href="#components" class="navbar__link">Components</a></li><li><button class="theme-toggle" data-theme-toggle><span class="theme-icon">🌙</span><span class="theme-label">Dark</span></button></li></ul></nav>
+  <section class="hero"><h1 class="hero-title">Ocean Blue</h1><p class="hero-subtitle">A serene, professional design system built from #3b82f6. Explore colors, typography, and components below.</p></section>
+
+  <section class="preview-section" id="colors">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">OKLCH-based color system with perceptual uniformity. Hue: 265°</p>
+    <h3 class="subsection-title">Primary</h3><div class="swatch-grid" id="primary-swatches"></div>
+    <h3 class="subsection-title">Neutral</h3><div class="swatch-grid" id="neutral-swatches"></div>
+    <h3 class="subsection-title">Semantic</h3><div class="swatch-grid" id="semantic-swatches"></div>
+  </section>
+
+  <section class="preview-section" id="typography">
+    <h2 class="section-title">Typography</h2>
+    <p class="section-desc">Major Third scale (1.250 ratio) with Inter font family.</p>
+    <div id="type-showcase"></div>
+  </section>
+
+  <section class="preview-section" id="components">
+    <h2 class="section-title">Components</h2>
+    <p class="section-desc">Production-ready components using only design tokens.</p>
+    <h3 class="subsection-title">Buttons</h3>
+    <div class="component-row">
+      <button class="btn btn--primary">Primary</button>
+      <button class="btn btn--secondary">Secondary</button>
+      <button class="btn btn--ghost">Ghost</button>
+      <button class="btn btn--danger">Danger</button>
+      <button class="btn btn--primary" disabled>Disabled</button>
+    </div>
+    <div class="component-row">
+      <button class="btn btn--primary btn--sm">Small</button>
+      <button class="btn btn--primary">Default</button>
+      <button class="btn btn--primary btn--lg">Large</button>
+    </div>
+    <h3 class="subsection-title">Badges</h3>
+    <div class="component-row">
+      <span class="badge badge--primary">Primary</span>
+      <span class="badge badge--success">Success</span>
+      <span class="badge badge--warning">Warning</span>
+      <span class="badge badge--danger">Danger</span>
+      <span class="badge badge--neutral">Neutral</span>
+    </div>
+    <h3 class="subsection-title">Inputs</h3>
+    <div class="component-grid">
+      <div class="form-group"><label class="form-label">Default</label><input class="input" placeholder="Type something..."><span class="form-helper">Helper text</span></div>
+      <div class="form-group"><label class="form-label">Error</label><input class="input input--error" value="Invalid" aria-invalid="true"><span class="form-error">Error message</span></div>
+      <div class="form-group"><label class="form-label">Disabled</label><input class="input" disabled value="Disabled"></div>
+    </div>
+    <h3 class="subsection-title">Cards</h3>
+    <div class="component-grid">
+      <div class="card card--elevated"><div class="card__header"><h4 class="card__title">Elevated Card</h4><p class="card__desc">Shadow-based depth with hover lift effect.</p></div><div class="card__footer"><button class="btn btn--ghost btn--sm">Cancel</button><button class="btn btn--primary btn--sm">Action</button></div></div>
+      <div class="card card--outlined"><div class="card__header"><h4 class="card__title">Outlined Card</h4><p class="card__desc">Border-based with hover color change.</p></div><div class="card__footer"><button class="btn btn--ghost btn--sm">Cancel</button><button class="btn btn--primary btn--sm">Action</button></div></div>
+      <div class="card card--filled"><div class="card__header"><h4 class="card__title">Filled Card</h4><p class="card__desc">Subtle background fill for distinction.</p></div><div class="card__footer"><button class="btn btn--ghost btn--sm">Cancel</button><button class="btn btn--primary btn--sm">Action</button></div></div>
+    </div>
+    <h3 class="subsection-title">Alerts</h3>
+    <div class="flex flex-col gap-4">
+      <div class="alert alert--info"><span class="alert__icon">ℹ️</span><div class="alert__body"><div class="alert__title">Information</div>A new version is available.</div></div>
+      <div class="alert alert--success"><span class="alert__icon">✅</span><div class="alert__body"><div class="alert__title">Success</div>Tokens saved successfully.</div></div>
+      <div class="alert alert--warning"><span class="alert__icon">⚠️</span><div class="alert__body"><div class="alert__title">Warning</div>Some contrasts may not meet WCAG AA.</div></div>
+      <div class="alert alert--danger"><span class="alert__icon">🚨</span><div class="alert__body"><div class="alert__title">Error</div>Failed to generate palette.</div></div>
+    </div>
+    <h3 class="subsection-title">Avatars</h3>
+    <div class="component-row">
+      <div class="avatar avatar--sm">S</div>
+      <div class="avatar avatar--md">M</div>
+      <div class="avatar avatar--lg">L</div>
+    </div>
+    <h3 class="subsection-title">Skeleton</h3>
+    <div style="max-width:20rem"><div class="flex gap-3 items-center" style="margin-bottom:var(--spacing-4)"><div class="skeleton skeleton--circle" style="width:2.5rem;height:2.5rem"></div><div style="flex:1"><div class="skeleton skeleton--text" style="width:60%"></div><div class="skeleton skeleton--text" style="width:40%"></div></div></div><div class="skeleton skeleton--rect" style="margin-bottom:var(--spacing-3);border-radius:var(--radius-md)"></div></div>
+  </section>
+
+  <footer class="preview-footer"><p>Generated by <a href="https://github.com/XINGANLIU/design-system-generator-skill">Design System Generator</a></p><p style="margin-top:var(--spacing-1)">One color in → Full design system out 🎨</p></footer>
+
+  <script>
+    (function(){const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement,i=t.querySelector('.theme-icon'),l=t.querySelector('.theme-label');const s=localStorage.getItem('ds-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');a(s);t.addEventListener('click',()=>{const c=r.getAttribute('data-theme');const n=c==='dark'?'light':'dark';a(n);localStorage.setItem('ds-theme',n)});function a(th){r.setAttribute('data-theme',th);i.textContent=th==='dark'?'☀️':'🌙';l.textContent=th==='dark'?'Light':'Dark'}})();
+    (function(){const steps=['50','100','200','300','400','500','600','700','800','900','950'];const pg=document.getElementById('primary-swatches'),ng=document.getElementById('neutral-swatches'),sg=document.getElementById('semantic-swatches');steps.forEach(s=>{pg.appendChild(sw(`--color-primary-${s}`,s));ng.appendChild(sw(`--color-neutral-${s}`,s))});['success-light','success','success-dark','warning-light','warning','warning-dark','error-light','error','error-dark','info-light','info','info-dark'].forEach(t=>sg.appendChild(sw(`--color-${t}`,t)));function sw(tk,lb){const d=document.createElement('div');d.className='swatch';d.style.background=`var(${tk})`;const n=parseInt(lb)||0;d.style.color=n>400||lb.includes('dark')?'#fff':'#1a1a2e';d.innerHTML=`<span class="swatch-label">${lb}</span>`;return d}})();
+    (function(){const c=document.getElementById('type-showcase');[{t:'--font-size-4xl',n:'4xl',r:'3.815rem'},{t:'--font-size-3xl',n:'3xl',r:'3.052rem'},{t:'--font-size-2xl',n:'2xl',r:'2.441rem'},{t:'--font-size-xl',n:'xl',r:'1.953rem'},{t:'--font-size-lg',n:'lg',r:'1.563rem'},{t:'--font-size-md',n:'md',r:'1.25rem'},{t:'--font-size-base',n:'base',r:'1rem'},{t:'--font-size-sm',n:'sm',r:'0.80rem'},{t:'--font-size-xs',n:'xs',r:'0.64rem'}].forEach(s=>{const d=document.createElement('div');d.className='type-sample';d.innerHTML=`<div class="type-meta">${s.n} · ${s.r}</div><div style="font-size:var(${s.t});font-weight:var(--font-weight-semibold);line-height:var(--line-height-tight)">The quick brown fox jumps over the lazy dog</div>`;c.appendChild(d)})})();
+  </script>
+</body>
+</html>
